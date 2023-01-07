@@ -1,4 +1,4 @@
-======================================================================================================================================================================================================
+=======================================================================================================================================================================
 
    _____                                _             ____    __      _                     _        _ _                  
   / ____|                              | |           |  _ \  /_/     (_)                   | |      | (_)                 
@@ -8,8 +8,8 @@
   \_____\___/|_| |_| |_|\__,_|_| |_|\__,_|\___/|___/ |____/ \__,_|___/_|\___\___/|___/  \__,_|\___| |_|_|_| |_|\__,_/_/\_\
 
 
+=======================================================================================================================================================================
 
-======================================================================================================================================================================================================
 cd Carpeta "Moverte entre carpetas, puedes pasarle la ruta completa de la carpeta o usar .. para regresar a la carpeta anterior o cd para ir a home"
 ls "mostrar archivos en carpeta" -la"adicional para mostrar archivos ocultos" -l "te muestra los permisos de cada archivo"
 cat "leer el contenido de un archivo"
@@ -46,7 +46,8 @@ touch file.txt "te ayuda a crear un archivo con el formato que desees, a diferen
 -v significa verbose significa que nos dara informacion mas detallada del resultado de un comando
 | xargs te permite agregar parametros extra al resultado de un comando
 
-==================================================================RUTAS==================================================================================================================================
+
+==================================================================RUTAS================================================================================================
 
 
 Ruta relativa o ALTERNA, es la que encuentra por su propia cuenta en base al path 
@@ -64,7 +65,7 @@ echo $SHELL te muestra la shell que utilizas, una zsh te permite añadir plugins
 las shells disponibles las puedes ver en la ruta etc/shells con el comando "cat /etc/shells" y puedes editarlas para añadir o eliminar
 
 
-==================================================================DESCRIPTORES============================================================================================================================
+==================================================================DESCRIPTORES=========================================================================================
 
 disown independiza un proceso de la consola, se utiliza de la sigiente forma "programa &>/dev/null & disown" 
 p-id es el numero identificador de proceso, cada aplicacion tiene un identificador y este no se puede compartir con otras aplicaciones 
@@ -80,7 +81,7 @@ exec 3<>&- nos cierra el descriptor que creamos
 exec 8>&3 nos permite clonar lo que hay en un descriptor "es como hacer una copia"
 exec 8>&3- nos clona el descriptor y cierra el que copiamos
 
-=====================================================================PERMISOS===============================================================================================================================
+=====================================================================PERMISOS==========================================================================================
 r = read
 w = write
 x = excute 
