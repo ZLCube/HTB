@@ -1,0 +1,121 @@
+======================================================================================================================================================================================================
+
+   _____                                _             ____    __      _                     _        _ _                  
+  / ____|                              | |           |  _ \  /_/     (_)                   | |      | (_)                 
+ | |     ___  _ __ ___   __ _ _ __   __| | ___  ___  | |_) | __ _ ___ _  ___ ___  ___    __| | ___  | |_ _ __  _   ___  __
+ | |    / _ \| '_ ` _ \ / _` | '_ \ / _` |/ _ \/ __| |  _ < / _` / __| |/ __/ _ \/ __|  / _` |/ _ \ | | | '_ \| | | \ \/ /
+ | |___| (_) | | | | | | (_| | | | | (_| | (_) \__ \ | |_) | (_| \__ \ | (_| (_) \__ \ | (_| |  __/ | | | | | | |_| |>  < 
+  \_____\___/|_| |_| |_|\__,_|_| |_|\__,_|\___/|___/ |____/ \__,_|___/_|\___\___/|___/  \__,_|\___| |_|_|_| |_|\__,_/_/\_\
+
+
+
+======================================================================================================================================================================================================
+cd Carpeta "Moverte entre carpetas, puedes pasarle la ruta completa de la carpeta o usar .. para regresar a la carpeta anterior o cd para ir a home"
+ls "mostrar archivos en carpeta" -la"adicional para mostrar archivos ocultos" -l "te muestra los permisos de cada archivo"
+cat "leer el contenido de un archivo"
+nano "editor de texto para editar el contenido de un archivo"
+mkdir "crear una carpeta"
+rm -r "eliminar carpeta independientemente de si tiene contenido o no"
+sudo su "convertirse en usuario administrador (Pide contraseña)"
+mv archivo ruta_destino  "mover de directorio archivos, carpetas, etc"
+cp copia archivos o directorios
+clear "limpia la consola"
+pwd "Muestra el directorio en el que estas"
+control + l "Limpia la consola sin borrar lo que estás escribiendo"
+flecha hacia arriba "Te permite usar comando anterior sin tener que escribirlo"
+flecha hacia abajo "te permite limpiar lo que estas escribiendo"
+flecha a la derecha --> "Te permite autocompletar lo que estas escribiendo segun el predictor de texto"
+flecha a la izquierda <-- "Te permite mover entre el texto escrito para modificarlo"
+--version "te permite ver la versión del programa que quieras utilizar por ejemplo (git --version)"
+tab "te permite completar nombre de archivos, directorios o comandos"
+control shift c "Te permite copiar lo que seleccionas"
+control shift v "Te permite pegar el porta papeles"
+control c "Termina un proceso que está en ejecución"
+control o "Guardar archivo"
+control x "Salir de archivo"
+chmod "te permite cambiar los permisos, ejecución, lectura, edición. por ejemplo (chmod +x script.sh) te daría permiso de ejecutar un script sin permiso de ejecución"
+./ "te permite ejecutar un archivo, por ejemplo (./script.sh) te permite ejecutar el script que previamente le dimos permiso de ejecución"
+echo "Te permite imprimir en pantalla texto, se le pueden pasar parametros como echo "hola mundo" y nos muestra un hola mundo en pantalla o echo $PATH para mostrar un directorio"
+grep "Te permite buscar una palabra clave (se conoce como "pipear"), por ejemplo [cat documento.txt | grep "Palabra a buscar"] "
+git clone "url" te permite clonar un repositorio de github para instalar herramientas 
+; "con punto y coma puedes separar comandos, esto te permite hacer multiples comandos en una sola linea"
+&& "Te permite ejecutar más de un comando por linea pero el siguiente solo se ejecutará si el primero es exitoso y no sale error" 
+|| "Te permite ejecutar un comando u otro, si el primero no se ejecuta entonces ejecuta el segundo"
+touch file.txt "te ayuda a crear un archivo con el formato que desees, a diferencia de nano este solo crea el archivo, no permite editarlo"
+-f el parametro -f te permite forzar, es decir que no va a preguntar y va a realizar la accion
+-v significa verbose significa que nos dara informacion mas detallada del resultado de un comando
+| xargs te permite agregar parametros extra al resultado de un comando
+
+==================================================================RUTAS==================================================================================================================================
+
+
+Ruta relativa o ALTERNA, es la que encuentra por su propia cuenta en base al path 
+por ejemplo whoami el cual si buscas "which whoami" te muestra donde se aloja el comando, también se puede usar el comando "command -v whoami"
+echo $PATH para ver la ruta alterna del comando
+
+la ruta ABSOLUTA es especificar cual quieres que use, por ejemplo /usr/bin/whoami
+
+el path hijacking sirve para cambiar binarios de forma relativa y así engañar a los comandos
+
+etc/passwd te muestra los usuarios con id de usuario, grupo, tipo de shell y ruta al directorio al cual te redirige el cd
+
+echo $SHELL te muestra la shell que utilizas, una zsh te permite añadir plugins, estetica y es más comoda a diferencia de una bash 
+
+las shells disponibles las puedes ver en la ruta etc/shells con el comando "cat /etc/shells" y puedes editarlas para añadir o eliminar
+
+
+==================================================================DESCRIPTORES============================================================================================================================
+
+disown independiza un proceso de la consola, se utiliza de la sigiente forma "programa &>/dev/null & disown" 
+p-id es el numero identificador de proceso, cada aplicacion tiene un identificador y este no se puede compartir con otras aplicaciones 
+
+stder es un código de error el cual podemos representar con un número 2 
+podemos redirigir el código de error para que no se muestre en pantalla con "2>/dev/null", dev null es un archivo que funciona como bote de basura
+stdout es el código exitoso, el cual podemos redirigir también al dev null con "comando > /dev/null", podemos combinar stder y stdout con "comando > /dev/null 2>&1"
+la forma más cómoda de combinar ster y stdout es con "comando &>/dev/null"
+
+exec 3<> file "nos crea un archivo  "el <> nos indican lectura y escritura""
+podemos enviar outputs al archivo creado con >&3 el cual es el numero que le definimos al primer descriptor 
+exec 3<>&- nos cierra el descriptor que creamos
+exec 8>&3 nos permite clonar lo que hay en un descriptor "es como hacer una copia"
+exec 8>&3- nos clona el descriptor y cierra el que copiamos
+
+=====================================================================PERMISOS===============================================================================================================================
+r = read
+w = write
+x = excute 
+Ejemplos:
+en caso de directorio         ---> drwx r-x r-x
+en caso de archivo            ---> .rw- r-- r--
+en caso de archivo ejecutable ---> .rwx rwx r-x
+
+primer grupo es permiso del propietario 
+segundo grupo es permiso del grupo
+tercer grupo permiso de otros
+
+Se visualiza de la siguiente forma: 
+drwx r-x r-x root root "fecha" "nombre_de_la_carpeta" 
+.rwx r-x r-x user group "fecha" "nombre_del_archivo" 
+
+useradd usuario te permite crear un nuevo usuario con parametro -s podemos asignar el tipo de shell por ejemplo "/bin/bash" con -d podemos crearle un directorio como "/home/usuario"
+usermod te permite agregar usuarios a grupos ejemplo "useradd -a -G Grupo usuario"
+
+En permisos octar se pueden referenciar como 755 al permiso RWX R-X R-X
+
+Es más sencillo viendolo de la siguiente manera 421 421 421, si hay letra es 1, si no hay letra es 0, por ejemplo RWX sería 111 y R-X sería 101, dependiendo si tiene 1 son los números que sumaremos
+Si tenemos 101 significa que vamos a sumar 4 y 1 ya que el 2 es 0 es decir que no hay valor por lo que la sumatoria de el grupo del permiso sería 5
+
+chmod +t carpeta/  agrega sticky bit para que solo el propietario o root puedan modificar esos archivos/directorios
+
+lsattr permite ver los permisos de un archivo y validar si se puede eliminar o no
+chattr +i -v  hace inmutable un archivo
+chattr -i -v  hace vulnerable un archivo
+
+permiso suid se asigna con chmod u+s o chmod 4755 
+
+sudo find / -type f -perm -4000 permite buscar archivos con eprmiso suid con 2>/dev/null eliminas el output 
+
+ser suid o sgid te permite ejecutar aplicaciones con permito de root a fin de buscar escalar accesos de admin del sistema 
+
+permiso sgid se asigna con chmod g+s o chmod 2755 
+
