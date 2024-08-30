@@ -296,6 +296,11 @@ public class Sets{
 Una forma aun más simplificada de dumpear la lista es pasando directamente en el constructor la lista:
 
 ```java
+import java.util.Set;
+
+public class Sets{
+	public static void main(String[] args){
+		
 		List<Integer> numeros = new ArrayList<>();
 		numeros.add(1);
 		numeros.add(2);
